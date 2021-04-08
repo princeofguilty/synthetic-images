@@ -1,0 +1,4 @@
+Backgrounds/929380-asphalt-wallpapers-1920x1200-tablet.jpg Objects/tri3_0.png 278 238 583 521 197 178 55 73 30
+Backgrounds/929380-asphalt-wallpapers-1920x1200-tablet.jpg Objects/tri3_0.png 278 238 1164 398 194 189 72 37 78
+Backgrounds/929380-asphalt-wallpapers-1920x1200-tablet.jpg Objects/tri3_0.png 278 238 1168 154 182 196 41 70 354
+Backgrounds/929380-asphalt-wallpapers-1920x1200-tablet.jpg Objects/tri3_0.png 278 238 1588 50 187 194 68 66 49
