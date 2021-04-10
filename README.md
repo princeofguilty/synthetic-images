@@ -1,4 +1,7 @@
 # Yolo optimized
+## IMAGEMAGICK is a must : apt install imagemagick
+## ANNOTATED OUTPUTS: NO COUNTORS USED --> PERFECT ANNOTATION
+## 15 background, 60 objects ~=~ 6000 annotated image
 
 # Creating Synthetic Image Datasets
 This tool helps create synthetic data for object detection modeling. Given

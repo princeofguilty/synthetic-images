@@ -146,9 +146,7 @@ def mutate_image(img, ang=-1):
         rotate_angle = random.randint(0,360)
     else:
         rotate_angle = ang
-    mask = Image.new('L', img.size, 255)
     img = img.rotate(rotate_angle, expand=True)
-    mask = mask.rotate(rotate_angle, expand=True)
 
 
     # perform some enhancements on image
@@ -162,7 +160,7 @@ def mutate_image(img, ang=-1):
     os.system("convert -trim tmp.png tmp.png")
     img = Image.open("tmp.png")
 
-    return img, mask, rotate_angle
+    return img, rotate_angle
 
 classesFile = set([])
 
@@ -209,8 +207,11 @@ if __name__ == "__main__":
             bkg_path = line[0]
         else:
             bkg_path = base_bkgs_path + line
-
-        bkg_img = Image.open(bkg_path)
+        try :
+            bkg_img = Image.open(bkg_path)
+        except Exception as e:
+            print(e)
+            continue
         bkg_x, bkg_y = bkg_img.size
         
         # Do single objs first
@@ -245,7 +246,7 @@ if __name__ == "__main__":
                         if(args.outsync):
                             osync.write( str(h) + " " + str(w) + " " + str(x) + " " + str(y) + " ")
                         if args.mutate:
-                            new_obj, mask, ang = mutate_image(obj_img)
+                            new_obj, ang = mutate_image(obj_img)
 
                             # osync.write(str())
                             # Paste on the obj
@@ -261,7 +262,7 @@ if __name__ == "__main__":
                         newFileName = noExtName+".txt"
                         if args.mutate:
                             with open(newFileName, "w") as f:
-                                new_obj.show()
+                                # new_obj.show()
                                 # x1,y1,w1,h1 = getContourDims(cv2.cvtColor(np.array(new_obj), cv2.COLOR_RGB2BGR))
                                 x1,y1,w1,h1 = 0,0,new_obj.size[0] ,new_obj.size[1]
                                 osync.write(str(h1) +" "+ str(w1) +" "+ str(x1) +" "+ str(y1) + " " + str(ang))
@@ -292,7 +293,7 @@ if __name__ == "__main__":
                         osync.write( str(h) + " " + str(w) + " " + str(x) + " " + str(y) + " ")
                     if args.mutate:
                         ang = int(line[10])
-                        new_obj, mask, _ = mutate_image(obj_img, ang)
+                        new_obj, _ = mutate_image(obj_img, ang)
                         # osync.write(str())
                         # Paste on the obj
                         bkg_w_obj.paste(new_obj, (x, y), new_obj)
