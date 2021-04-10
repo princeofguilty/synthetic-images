@@ -10,7 +10,7 @@ background and superimposes objects within the frame in random locations,
 automatically annotating as it goes. The tool also resizes the icons to help the
 model generalize better to the real world.
 
-### ~~ GAMMA IDEA - NOT TESTED TRAINING METHOD - ~~
+### ~~GAMMA IDEA, NOT TESTED TRAINING METHOD~~
 # BETA, I can say it works, hopefully!
 
 
