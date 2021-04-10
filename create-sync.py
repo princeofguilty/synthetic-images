@@ -13,34 +13,6 @@ import glob
 
 skip = "n"
 
-def getContourDims(diff):
-    # thresh = cv2.threshold(diff, 120, 255, cv2.THRESH_BINARY_INV)[1]
-    diff = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
-    _, thresh = cv2.threshold(diff, 0, 255, cv2.THRESH_OTSU)
-    # cv2.imshow(winname='x', mat=thresh)
-    # cv2.waitKey(0)
-    # thresh = cv2.threshold(diff, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[1]
-    # thresh = cv2.adaptiveThreshold(diff, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 115, 1)
-    # thresh = cv2.threshold(diff, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
-    cnts = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    cnts = imutils.grab_contours(cnts)
-    # thresh = cv2.adaptiveThreshold(diff, t, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, a, 2)
-    # cv2.imshow('t', thresh)
-    # cv2.waitKey(0)
-    cnts = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    cnts = imutils.grab_contours(cnts)
-    last_area = 0
-    for c in cnts:
-        area = cv2.contourArea(c)
-        if area > last_area:
-            (x, y, w, h) = cv2.boundingRect(c)
-    # compute the bounding box of the contour and then draw the
-    # bounding box on both input images to represent where the two
-    # images differ
-    # cv2.rectangle(imageA, (x, y), (x + w, y + h), (0, 0, 255), 2)
-    return x, y, w, h
-
-
 # Entrypoint Args
 parser = argparse.ArgumentParser(description='Create synthetic training data for object detection algorithms.')
 parser.add_argument("-bkg", "--backgrounds", type=str, default="Backgrounds/",
