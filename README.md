@@ -3,7 +3,7 @@
 ## ANNOTATED OUTPUTS: NO COUNTORS USED --> PERFECT ANNOTATION
 ## 15 background, 60 objects ~=~ 6000 annotated image
 
-![alt text](https://github.com/princeofguilty/synthetic-images/tree/master/Examples/2.jpeg)
+![alt text](https://i.postimg.cc/K8ZpNjZ6/2.jpg)
 
 # Creating Synthetic Image Datasets
 This tool helps create synthetic data for object detection modeling. Given
